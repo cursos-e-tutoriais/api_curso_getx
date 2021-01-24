@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const db = require('./database/index');
 
 const router = express.Router();
 const app = express();
@@ -15,7 +16,11 @@ router.get('/api/v1', (req, res) => {
 });
 
 require('./routes/register-user')(app);
+require('./routes/login-user')(app);
 
-app.listen(8080, (req, res) => {
-    console.log('Servidor rodando, Ctrl+c para encerrar');
+db.once('open', () =>{
+    console.log('Connected to mongoose')
+    app.listen(8080, (req, res) => {
+        console.log('Servidor rodando, Ctrl+c para encerrar');
+    });
 });
