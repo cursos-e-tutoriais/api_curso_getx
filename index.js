@@ -14,6 +14,8 @@ router.get('/api/v1', (req, res) => {
     });
 });
 
+require('./routes/register-user')(app);
+
 app.listen(8080, (req, res) => {
     console.log('Servidor rodando, Ctrl+c para encerrar');
 });
