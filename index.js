@@ -17,6 +17,7 @@ router.get('/api/v1', (req, res) => {
 
 require('./routes/register-user')(app);
 require('./routes/login-user')(app);
+require('./routes/user-data')(app);
 
 db.once('open', () =>{
     console.log('Connected to mongoose')
